@@ -1,13 +1,6 @@
-# 🍨 Ice Cream Pricing & Demand Analytics
-
-### Excel · VBA · MySQL · Power BI
-
-> **End-to-end analytics project:** From messy raw data to strategic pricing recommendations. Complete workflow across Excel (with VBA), SQL (8-step pipeline), and Power BI (interactive dashboard).
-
----
 
 # 🍦 Pricing Strategy & Demand Analysis  
-### Data-Driven Pricing Optimization using SQL, Power BI & Excel  
+### Data-Driven Pricing Optimization using SQL, Power BI & Excel  (with VBA)
 
 ---
 
