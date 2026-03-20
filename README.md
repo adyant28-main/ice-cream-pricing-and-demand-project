@@ -28,7 +28,7 @@ Using SQL-driven analytics and Power BI visualization, a structured pricing fram
 ## 🛠️ Tech Stack
 - **SQL (MySQL)** – Data cleaning, transformation, and analytical queries  
 - **Power BI** – Dashboarding for demand, pricing, and trend analysis  
-- **Excel** – Data validation, exploratory analysis, aggregation checks, and pricing scenario testing  
+- **Excel** – Data validation, data modelling, demand forecasting, exploratory analysis, aggregation checks, and pricing scenario testing  
 
 ---
 
