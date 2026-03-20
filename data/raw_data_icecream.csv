@@ -1,1 +1,149 @@
- .
+Date,Flavour,Location,Season,Day_Type,Units_Sold,Selling_Price,Cost_Per_Unit,Weather,Festive_Day
+01-Apr-22, Mango ,Connaught Place,Summer,Weekday,75,35,16,Hot,No
+02-Apr-22,chocolate,Lajpat Nagar,Summer,Weekend,65,40,18,Hot,No
+05-Apr-22,Vanilla,karol bagh,Summer,Weekday,50,30,,Hot,No
+08-Apr-22,Strawberry,Connaught Place,Summer,Weekend,55,35,15,Hot,No
+10-Apr-22,Kesar Pista,LAJPAT NAGAR,Summer,Weekday,40,55,22,Hot,No
+14-Apr-22,Mango,Connaught Place,Summer,Weekend,130,38,16,Hot,Yes
+14-Apr-22,Chocolate ,Karol Bagh,Summer,Weekend,95,42,18,Hot,Yes
+14-Apr-22,Strawberry,Lajpat Nagar,Summer,Weekend,85,38,15,Hot,Yes
+18-Apr-22,vanilla,Connaught Place,Summer,Weekday,55,30,13,Hot,No
+22-Apr-22,Mango,Karol Bagh,Summer,Weekday,-5,35,16,Hot,No
+25-Apr-22,Chocolate,Connaught Place,Summer,Weekend,90,40,18,Hot,No
+01-May-22,Mango,Connaught Place,Summer,Weekday,90,38,16,Hot,No
+05-May-22,Kesar Pista,Lajpat Nagar,Summer,Weekend,55,58,,Very Hot,No
+08-May-22,Vanilla,Karol Bagh,Summer,Weekday,60,30,13,Very Hot,No
+12-May-22,Mango,Connaught Place,Summer,Weekend,140,40,16,Very Hot,No
+15-May-22,Chocolate,Lajpat Nagar,Summer,Weekday,85,42,18,Very Hot,No
+18-May-22,Strawberry,Karol Bagh,Summer,Weekend,100,38,15,Very Hot,No
+22-May-22,Mango,Connaught Place,Summer,Weekday,105,40,16,Very Hot,No
+25-May-22,Kesar Pista,Connaught Place,Summer,Weekend,65,60,22,Very Hot,No
+28-May-22,Vanilla,Lajpat Nagar,Summer,Weekday,65,32,13,Very Hot,No
+01-Jun-22,Mango,Connaught Place,Summer,Weekday,120,42,16,Very Hot,No
+05-Jun-22,Chocolate,Karol Bagh,Summer,Weekend,110,44,18,Very Hot,No
+08-Jun-22,Strawberry,Lajpat Nagar,Summer,Weekday,95,40,15,Very Hot,No
+12-Jun-22,Mango,Connaught Place,Summer,Weekend,150,44,16,Very Hot,No
+15-Jun-22,Kesar Pista,Karol Bagh,Summer,Weekday,70,62,22,Hot,No
+18-Jun-22,Vanilla,Connaught Place,Summer,Weekday,75,32,13,Hot,No
+22-Jun-22,Chocolate,Lajpat Nagar,Summer,Weekend,115,44,18,Hot,No
+25-Jun-22,Mango,Karol Bagh,Summer,Weekday,125,42,16,Hot,No
+01-Jul-22,Mango,Connaught Place,Monsoon,Weekday,50,38,16,Rainy,No
+05-Jul-22,Chocolate,Lajpat Nagar,Monsoon,Weekend,65,40,18,Rainy,No
+08-Jul-22,Vanilla,Karol Bagh,Monsoon,Weekday,38,28,,Rainy,No
+12-Jul-22,Strawberry,Connaught Place,Monsoon,Weekend,55,35,15,Cloudy,No
+15-Jul-22,Mango,Lajpat Nagar,Monsoon,Weekday,45,36,16,Rainy,No
+18-Jul-22,Chocolate,Karol Bagh,Monsoon,Weekday,60,40,18,Cloudy,No
+22-Jul-22,Kesar Pista,Connaught Place,Monsoon,Weekend,35,55,22,Cloudy,No
+25-Jul-22,Vanilla,Lajpat Nagar,Monsoon,Weekday,35,28,13,Rainy,No
+01-Aug-22,Mango,Connaught Place,Monsoon,Weekday,48,36,16,Rainy,No
+05-Aug-22,Chocolate,Karol Bagh,Monsoon,Weekend,70,40,18,Cloudy,No
+08-Aug-22,Strawberry,Lajpat Nagar,Monsoon,Weekday,50,33,15,Rainy,No
+15-Aug-22,Mango,Connaught Place,Monsoon,Weekend,90,40,16,Cloudy,Yes
+15-Aug-22,Chocolate,Lajpat Nagar,Monsoon,Weekend,80,44,18,Cloudy,Yes
+15-Aug-22,Kesar Pista,Karol Bagh,Monsoon,Weekend,55,60,22,Cloudy,Yes
+20-Aug-22,Vanilla,Connaught Place,Monsoon,Weekday,40,28,13,Rainy,No
+25-Aug-22,Mango,Lajpat Nagar,Monsoon,Weekday,52,36,16,Cloudy,No
+01-Sep-22,Chocolate,Karol Bagh,Monsoon,Weekend,68,40,18,Cloudy,No
+08-Sep-22,Strawberry,Connaught Place,Monsoon,Weekday,48,33,15,Cloudy,No
+15-Sep-22,Mango,Lajpat Nagar,Monsoon,Weekend,60,36,16,Cloudy,No
+22-Sep-22,Vanilla,Karol Bagh,Monsoon,Weekday,38,28,13,Cloudy,No
+01-Oct-22,Mango,Connaught Place,Winter,Weekday,38,32,16,Cool,No
+05-Oct-22,Chocolate,Lajpat Nagar,Winter,Weekend,55,38,18,Cool,No
+08-Oct-22,Kesar Pista,Karol Bagh,Winter,Weekday,30,52,22,Cool,No
+12-Oct-22,Vanilla,Connaught Place,Winter,Weekday,28,26,13,Cool,No
+15-Oct-22,Strawberry,Lajpat Nagar,Winter,Weekend,42,32,15,Cool,No
+20-Oct-22,Mango,Connaught Place,Winter,Weekend,62,35,16,Cool,Yes
+20-Oct-22,Chocolate,Karol Bagh,Winter,Weekend,75,42,18,Cool,Yes
+25-Oct-22,Mango,Lajpat Nagar,Winter,Weekday,35,32,16,Cool,No
+01-Nov-22,Chocolate,Connaught Place,Winter,Weekday,42,38,18,Cold,No
+05-Nov-22,Vanilla,Karol Bagh,Winter,Weekday,25,26,13,Cold,No
+08-Nov-22,Strawberry,Lajpat Nagar,Winter,Weekend,38,30,15,Cold,No
+12-Nov-22,Kesar Pista,Connaught Place,Winter,Weekday,28,50,22,Cold,No
+01-Dec-22,Chocolate,Lajpat Nagar,Winter,Weekday,40,38,18,Cold,No
+10-Dec-22,Vanilla,Karol Bagh,Winter,Weekday,22,26,13,Cold,No
+15-Dec-22,Mango,Connaught Place,Winter,Weekend,32,32,16,Cold,No
+25-Dec-22,Chocolate,Connaught Place,Winter,Weekend,88,44,18,Cold,Yes
+25-Dec-22,Strawberry,Lajpat Nagar,Winter,Weekend,65,38,15,Cold,Yes
+25-Dec-22,Kesar Pista,Karol Bagh,Winter,Weekend,50,58,22,Cold,Yes
+01-Jan-23,Vanilla,Karol Bagh,Winter,Weekday,22,26,13,Very Cold,No
+08-Jan-23,Chocolate,Connaught Place,Winter,Weekday,38,38,18,Very Cold,No
+15-Jan-23,Mango,Lajpat Nagar,Winter,Weekday,28,30,16,Very Cold,No
+22-Jan-23,Strawberry,Karol Bagh,Winter,Weekday,25,28,15,Cold,No
+26-Jan-23,Mango,Connaught Place,Winter,Weekend,58,35,16,Cold,Yes
+26-Jan-23,Chocolate,Lajpat Nagar,Winter,Weekend,65,40,18,Cold,Yes
+26-Jan-23,Kesar Pista,Karol Bagh,Winter,Weekend,42,55,22,Cold,Yes
+01-Feb-23,Vanilla,Connaught Place,Winter,Weekday,25,26,13,Cold,No
+10-Feb-23,Chocolate,Lajpat Nagar,Winter,Weekend,48,38,18,Cool,No
+15-Feb-23,Strawberry,Karol Bagh,Winter,Weekday,32,30,15,Cool,No
+01-Mar-23,Mango,Connaught Place,Summer,Weekday,65,35,16,Warm,No
+08-Mar-23,Vanilla,Lajpat Nagar,Summer,Weekday,45,28,13,Warm,Yes
+15-Mar-23,Chocolate,Karol Bagh,Summer,Weekday,58,38,18,Warm,No
+22-Mar-23,Mango,Connaught Place,Summer,Weekend,88,38,16,Hot,No
+25-Mar-23,Strawberry,Lajpat Nagar,Summer,Weekend,70,35,15,Hot,No
+01-Apr-23,Mango,Connaught Place,Summer,Weekday,80,36,17,Hot,No
+05-Apr-23,Chocolate,Lajpat Nagar,Summer,Weekend,72,42,19,Hot,No
+08-Apr-23,Vanilla,Karol Bagh,Summer,Weekday,55,30,14,Hot,No
+12-Apr-23,Strawberry,Connaught Place,Summer,Weekend,62,36,16,Hot,No
+14-Apr-23,Mango,Connaught Place,Summer,Weekend,140,40,17,Hot,Yes
+14-Apr-23,Kesar Pista,Lajpat Nagar,Summer,Weekend,75,60,23,Hot,Yes
+14-Apr-23,Chocolate,Karol Bagh,Summer,Weekend,100,44,19,Hot,Yes
+18-Apr-23,Vanilla,Connaught Place,Summer,Weekday,58,30,14,Hot,No
+22-Apr-23,Mango,Karol Bagh,Summer,Weekday,85,36,17,Hot,No
+25-Apr-23,Chocolate,Lajpat Nagar,Summer,Weekend,95,42,19,Hot,No
+01-May-23,Mango,Connaught Place,Summer,Weekday,95,38,17,Hot,No
+05-May-23,Kesar Pista,Karol Bagh,Summer,Weekend,60,62,23,Hot,No
+08-May-23,Vanilla,Lajpat Nagar,Summer,Weekday,62,30,14,Very Hot,No
+12-May-23,Mango,Connaught Place,Summer,Weekend,148,42,17,Very Hot,No
+15-May-23,Chocolate,Karol Bagh,Summer,Weekday,90,44,19,Very Hot,No
+18-May-23,Strawberry,Lajpat Nagar,Summer,Weekend,108,40,16,Very Hot,No
+22-May-23,Mango,Connaught Place,Summer,Weekday,112,42,17,Very Hot,No
+25-May-23,Kesar Pista,Connaught Place,Summer,Weekend,68,64,23,Very Hot,No
+28-May-23,Vanilla,Karol Bagh,Summer,Weekday,68,32,14,Very Hot,No
+01-Jun-23,Mango,Connaught Place,Summer,Weekday,125,44,17,Very Hot,No
+05-Jun-23,Chocolate,Lajpat Nagar,Summer,Weekend,115,46,19,Very Hot,No
+08-Jun-23,Strawberry,Karol Bagh,Summer,Weekday,100,40,16,Very Hot,No
+12-Jun-23,Mango,Connaught Place,Summer,Weekend,158,46,17,Very Hot,No
+15-Jun-23,Kesar Pista,Karol Bagh,Summer,Weekday,72,65,23,Hot,No
+18-Jun-23,Vanilla,Lajpat Nagar,Summer,Weekday,78,32,14,Hot,No
+22-Jun-23,Chocolate,Connaught Place,Summer,Weekend,120,46,19,Hot,No
+25-Jun-23,Mango,Karol Bagh,Summer,Weekday,130,44,17,Hot,No
+01-Jul-23,Mango,Connaught Place,Monsoon,Weekday,52,38,17,Rainy,No
+05-Jul-23,Chocolate,Lajpat Nagar,Monsoon,Weekend,68,42,19,Rainy,No
+08-Jul-23,Vanilla,Karol Bagh,Monsoon,Weekday,40,28,14,Rainy,No
+12-Jul-23,Strawberry,Connaught Place,Monsoon,Weekend,58,35,16,Cloudy,No
+15-Jul-23,Mango,Lajpat Nagar,Monsoon,Weekday,48,36,17,Rainy,No
+18-Jul-23,Chocolate,Karol Bagh,Monsoon,Weekday,62,40,19,Cloudy,No
+22-Jul-23,Kesar Pista,Connaught Place,Monsoon,Weekend,38,56,23,Cloudy,No
+25-Jul-23,Vanilla,Lajpat Nagar,Monsoon,Weekday,38,28,14,Rainy,No
+01-Aug-23,Mango,Connaught Place,Monsoon,Weekday,50,36,17,Rainy,No
+05-Aug-23,Chocolate,Karol Bagh,Monsoon,Weekend,72,42,19,Cloudy,No
+08-Aug-23,Strawberry,Lajpat Nagar,Monsoon,Weekday,52,33,16,Rainy,No
+15-Aug-23,Mango,Connaught Place,Monsoon,Weekend,95,42,17,Cloudy,Yes
+15-Aug-23,Chocolate,Lajpat Nagar,Monsoon,Weekend,85,46,19,Cloudy,Yes
+15-Aug-23,Kesar Pista,Karol Bagh,Monsoon,Weekend,58,62,23,Cloudy,Yes
+20-Aug-23,Vanilla,Connaught Place,Monsoon,Weekday,42,28,14,Rainy,No
+25-Aug-23,Mango,Lajpat Nagar,Monsoon,Weekday,55,36,17,Cloudy,No
+01-Sep-23,Chocolate,Karol Bagh,Monsoon,Weekend,70,42,19,Cloudy,No
+08-Sep-23,Strawberry,Connaught Place,Monsoon,Weekday,50,33,16,Cloudy,No
+15-Sep-23,Mango,Lajpat Nagar,Monsoon,Weekend,62,36,17,Cloudy,No
+22-Sep-23,Vanilla,Karol Bagh,Monsoon,Weekday,40,28,14,Cloudy,No
+01-Oct-23,Mango,Connaught Place,Winter,Weekday,40,33,17,Cool,No
+05-Oct-23,Chocolate,Lajpat Nagar,Winter,Weekend,58,40,19,Cool,No
+08-Oct-23,Kesar Pista,Karol Bagh,Winter,Weekday,32,54,23,Cool,No
+12-Oct-23,Vanilla,Connaught Place,Winter,Weekday,30,26,14,Cool,No
+15-Oct-23,Strawberry,Lajpat Nagar,Winter,Weekend,44,32,16,Cool,No
+20-Oct-23,Mango,Connaught Place,Winter,Weekend,68,36,17,Cool,Yes
+20-Oct-23,Chocolate,Karol Bagh,Winter,Weekend,80,44,19,Cool,Yes
+25-Oct-23,Mango,Lajpat Nagar,Winter,Weekday,38,33,17,Cool,No
+01-Nov-23,Chocolate,Connaught Place,Winter,Weekday,45,40,19,Cold,No
+05-Nov-23,Vanilla,Karol Bagh,Winter,Weekday,28,26,14,Cold,No
+08-Nov-23,Strawberry,Lajpat Nagar,Winter,Weekend,40,30,16,Cold,No
+12-Nov-23,Kesar Pista,Connaught Place,Winter,Weekday,30,52,23,Cold,No
+01-Dec-23,Chocolate,Lajpat Nagar,Winter,Weekday,42,40,19,Cold,No
+10-Dec-23,Vanilla,Karol Bagh,Winter,Weekday,24,26,14,Cold,No
+15-Dec-23,Mango,Connaught Place,Winter,Weekend,35,33,17,Cold,No
+25-Dec-23,Chocolate,Connaught Place,Winter,Weekend,92,46,19,Cold,Yes
+25-Dec-23,Strawberry,Lajpat Nagar,Winter,Weekend,68,40,16,Cold,Yes
+25-Dec-23,Kesar Pista,Karol Bagh,Winter,Weekend,52,60,23,Cold,Yes
+01-Apr-22, Mango ,Connaught Place,Summer,Weekday,75,35,16,Hot,No
+14-Apr-22,Mango,Connaught Place,Summer,Weekend,130,38,16,Hot,Yes
