@@ -131,18 +131,6 @@ Developed a rule-based system combining:
 - Dynamic pricing (season‑adjusted) is projected to increase gross profit by 12.8% in 2024 compared to 2023.
 - Competitor benchmark shows the client’s prices are consistently below market for premium flavours (e.g., Kesar  Pista), leaving room for increase.
 
-graph LR
-  A[2023 Actual] --> B[Dynamic Pricing Applied]
-  B --> C[2024 Projected]
-  
-  subgraph Metrics
-    C1[Revenue: ₹204K → ₹274K<br/>+34%]
-    C2[Profit: ₹115K → ₹169K<br/>+47%]
-    C3[Margin: 56.3% → 61.8%<br/>+5.46pp]
-  end
-  
-  B --> C1 & C2 & C3
-
 ---
 
 ## 📊 Power BI Dashboard
