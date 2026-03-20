@@ -1,211 +1,264 @@
-# 🍨 Ice Cream Pricing & Demand Analysis
-### Excel · VBA · MySQL · Power BI
+🍨 Ice Cream Pricing & Demand Analytics
+Excel · VBA · MySQL · Power BI
 
-> End-to-end ice cream sales analysis — Excel, VBA, MySQL &amp; Power BI | Pricing strategy, demand analysis and forecasting for a Delhi vendor (2022–2023)
+    End-to-end analytics project: From messy raw data to strategic pricing recommendations. Complete workflow across Excel (with VBA), SQL (8-step pipeline), and Power BI (interactive dashboard).
 
----
+📌 The Business Problem
 
-## The Business Problem
+A street ice cream vendor operating across 3 Delhi locations had 2 years of sales data sitting in a spreadsheet — unclean, unanalysed, and underused. Prices hadn't been reviewed against the market. There was no visibility into:
 
-A street ice cream vendor operating across 3 Delhi locations had 2 years of sales data sitting in a spreadsheet — unclean, unanalysed, and underused. Prices hadn't been reviewed against the market. There was no visibility into which flavours were actually profitable, which seasons drove demand, or whether the pricing strategy made sense.
+    Which flavours were actually profitable
+
+    Which seasons drove demand
+
+    Whether the pricing strategy made sense
 
 This project answers four questions a business owner would actually ask:
 
-- **What sold, where, and when?**
-- **Are we making enough margin on each flavour?**
-- **How do our prices compare to the market — and what should we charge?**
-- **What happens to profit if we adjust prices or volume?**
+    What sold, where, and when? — Demand patterns by flavour, season, location, day type
 
----
+    Are we making enough margin? — Cost structure and profitability per flavour
 
-## Dataset
+    How do our prices compare to the market? — Competitor benchmarking and pricing strategy
 
-| Property | Detail |
-|---|---|
-| Period | April 2022 — December 2023 |
-| Records | 148 transactions |
-| Flavours | Mango, Chocolate, Vanilla, Strawberry, Kesar Pista |
-| Locations | Connaught Place, Lajpat Nagar, Karol Bagh |
-| Seasons | Summer, Monsoon, Winter |
-| Fields | Date, Flavour, Location, Season, Day Type, Units Sold, Selling Price, Cost/Unit, Weather, Festival Day |
+    What happens to profit if we adjust prices? — Scenario modelling and what-if analysis
 
-Two versions of the raw data exist intentionally — one for Excel cleaning (.xlsm) and one as a deliberately messy .csv for the SQL cleaning pipeline. Both trace back to the same source; the messiness in the CSV (case inconsistencies, nulls, whitespace, one negative units row) was introduced to demonstrate SQL data wrangling.
+📊 Dataset
+Property	Detail
+Period	April 2022 — December 2023
+Records	148 transactions
+Flavours	Mango, Chocolate, Vanilla, Strawberry, Kesar Pista
+Locations	Connaught Place, Lajpat Nagar, Karol Bagh
+Seasons	Summer, Monsoon, Winter
+Fields	Date, Flavour, Location, Season, Day Type, Units Sold, Selling Price, Cost/Unit, Weather, Festival Day
 
----
+    Note: Two versions of raw data exist intentionally — one for Excel cleaning (within the workbook) and one as a deliberately messy .csv for the SQL cleaning pipeline. Both trace back to the same source; the messiness in the CSV (case inconsistencies, nulls, whitespace, negative units) was introduced to demonstrate SQL data wrangling skills.
 
-## Project Workflow
-```
+🔄 Project Workflow
+text
+
 Raw Data → Data Cleaning → Pivot Analysis → Cost & P&L Modelling
-→ Dynamic Pricing → Demand Forecasting → What-If Analysis
-→ Scenario Manager → Solver Optimisation → VBA Automation
-→ SQL Pipeline → Power BI Dashboard
-```
+    → Dynamic Pricing → Demand Forecasting → What-If Analysis
+    → Scenario Manager → Solver Optimisation → VBA Automation
+    → SQL Pipeline → Power BI Dashboard
 
----
+📁 Repository Structure
+text
 
-## Tools & Files
+ice-cream-pricing-and-demand-project/
+│
+├── README.md                          # This file
+│
+├── excel/
+│   └── IceCreamSeller_pricingprojectFinal.xlsm    # Main Excel workbook with VBA
+│
+├── sql/
+│   └── ice_cream_project_analysis.sql             # Complete 8-step SQL pipeline
+│
+├── powerbi/
+│   └── IceCream_Dashboard.pbix                    # Interactive Power BI dashboard
+│
+├── data/
+│   ├── raw_icecream_messy.csv                     # Messy data for SQL pipeline
+│   └── competitor_benchmark.csv                   # Competitor pricing data
+│
+└── output/
+    └── pricing_recommendations.csv                # Export of final decisions
 
-| Tool | File | What It Does |
-|---|---|---|
-| **Excel + VBA** | `IceCreamSeller_pricingprojectFinal.xlsm` | Full analysis workbook — cleaning, pivots, P&L, pricing, forecasting, scenarios, solver, VBA, dashboard |
-| **MySQL** | `ice_cream_project_analysis.sql` | 8-step SQL pipeline — raw import to final pricing decision |
-| **Power BI** | `IceCream_Dashboard.pbix` | Interactive dashboard — DAX measures, Power Query, slicers |
-| **Data** | `raw_icecream_messy.csv` | Raw input for SQL pipeline |
-| **Data** | `competitor_benchmark.csv` | Competitor pricing table for SQL JOIN analysis |
-
----
-
-## Excel Workbook — Sheet by Sheet
+📊 Excel Workbook — Sheet by Sheet
 
 The workbook follows a deliberate analyst workflow. Each sheet builds on the last.
+Sheet	Purpose
+Raw_Data	Original untouched data as imported. Preserved for audit trail.
+Cleaning_Log	Documents every error found and fix applied: wrong case (PROPER function), null costs (AVERAGEIF imputation), duplicate rows, formatting inconsistencies.
+Cleaned_Data	Standardised table with computed columns: Revenue (Units × Price), Total Cost (Units × Cost), Profit (Revenue − Cost), Year. Single source of truth.
+1) Pivot_DemandAnalysis	Five pivot tables covering demand by flavour, location, season, day type, and full flavour-season interaction matrix.
+2) Cost Structure	Flavour-level cost breakdown: average selling price, average cost per unit, gross margin, and margin %.
+3) Pricing_Strategy	Benchmarks our prices against local market. Every flavour priced below market.
+4) Demand Forecasting	Projects 2024 demand by flavour using historical seasonal patterns.
+5) Profit & Loss	Full 2023 P&L with units, revenue, cost, gross profit, and margin % per flavour.
+Season Pricing Dynamics	Strategic centrepiece. Models 3 pricing scenarios for 2024 Monsoon using forecasted demand.
+DASHBOARD	Single-page Excel dashboard with KPI cards, charts, and VBA-powered refresh button.
+🔧 VBA Macros
 
-**`Raw_Data`** — Original untouched data as imported. Preserved for audit trail.
+Two macros in the workbook, assigned to dashboard buttons:
+1. RefreshDashboard
 
-**`Cleaning_Log`** — Documents every error found and fix applied: wrong case (PROPER function), null costs (AVERAGEIF imputation), duplicate rows, formatting inconsistencies. Kept as a reference — because in a real job, you explain what you changed and why.
+Refreshes all pivot tables across the workbook in one click, recalculates derived fields.
+vba
 
-**`Cleaned_Data`** — Standardised table with computed columns: Revenue (`Units × Price`), Total Cost (`Units × Cost`), Profit (`Revenue − Cost`), Year. Used as the single source of truth for all downstream analysis.
+Sub RefreshDashboard()
+    Dim pt As PivotTable
+    For Each ws In ThisWorkbook.Worksheets
+        For Each pt In ws.PivotTables
+            pt.RefreshTable
+        Next pt
+    Next ws
+    ThisWorkbook.RefreshAll
+    MsgBox "Dashboard refreshed successfully!"
+End Sub
 
-**`1) Pivot_DemandAnalysis`** — Five pivot tables covering demand by flavour, location, season, day type, and a full flavour-season interaction matrix. Answers: what sells most, and in which conditions.
+2. ExportPDFReport
 
-**`2) Cost Structure`** — Flavour-level cost breakdown: average selling price, average cost per unit, gross margin, and margin %. Kesar Pista leads at 61.2% margin; Vanilla is weakest at 52.7%.
+Exports the dashboard sheet as a formatted PDF with timestamp in filename — one-click reporting.
+vba
 
-**`3) Pricing_Strategy`** — Benchmarks our prices against the local competitor market (Company X). Every single flavour is priced below market. Mango has the largest gap (−₹7.39), Kesar Pista the smallest (−₹1.00).
-
-**`4) Demand Forecasting`** — Uses historical seasonal demand patterns to project 2024 Monsoon units by flavour. Applies proportional share logic from 2022+2023 combined Monsoon data.
-
-**`5) Profit & Loss`** — Full 2023 P&L: units, avg price, revenue, cost, gross profit, and margin % per flavour. Total 2023: ₹2,04,493 revenue, ₹1,15,209 gross profit, 56.4% blended margin.
-
-**`Season Pricing Dynamics`** — The strategic centrepiece. Models 3 pricing scenarios for the 2024 Monsoon season using forecasted demand:
-- **Baseline** (current recommended prices): ₹25,698 profit
-- **Premium** (+10–15% price increase): ₹28,593 profit — best outcome
-- **Volume Boost** (price cut to drive units): ₹23,132 profit — worst outcome
-
-Conclusion: raising prices outperforms cutting them. Volume alone does not compensate for margin loss.
-
-**`DASHBOARD`** — Single-page Excel dashboard with KPI cards, charts, and a VBA-powered Data Refresh button. Built for a non-technical business owner to use.
-
----
-
-## VBA
-
-Two macros in the workbook:
-
-**`RefreshDashboard`** — Refreshes all pivot tables across the workbook in one click, recalculates derived fields, and resets slicer selections. Assigned to the dashboard button.
-
-**`ExportPDFReport`** — Exports the dashboard sheet as a formatted PDF with timestamp in the filename. One-click report generation for sharing with stakeholders who don't have Excel.
-```vba
 Sub ExportPDFReport()
     Dim fileName As String
-    fileName = "IceCream_Report_" & Format(Now(), "YYYYMMDD") & ".pdf"
-    Sheets("DASHBOARD").ExportAsFixedFormat Type:=xlTypePDF, _
-        Filename:=fileName, Quality:=xlQualityStandard
+    fileName = "IceCream_Report_" & Format(Now(), "YYYYMMDD_hhmmss") & ".pdf"
+    Sheets("DASHBOARD").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        Filename:=ThisWorkbook.Path & "\" & fileName, _
+        Quality:=xlQualityStandard
     MsgBox "Report saved: " & fileName
 End Sub
-```
 
----
+🗄️ SQL Pipeline — 8 Steps
+Step	Description	Key Techniques
+1	Database & Table Creation	DDL, schema design
+2	Data Discovery	NULL checks, negative values, distinct values audit
+3	Data Cleaning	CTEs, COALESCE, NULLIF, STR_TO_DATE, ROW_NUMBER() deduplication
+4	Business Summary	Aggregations, 2023 performance
+5	Flavour Demand Segmentation	NTILE(4) window function
+6	Advanced Analytics	Competitor JOIN, price band analysis, price sensitivity proxy
+7	Month-on-Month Trend	LAG() window function, MoM growth %
+8	Final Pricing Decision	CTE + RANK() + multi-condition CASE WHEN with margin priority
+Sample: Final Pricing Decision Logic
+sql
 
-## SQL Pipeline — 8 Steps
+CASE 
+    WHEN (avg_price - avg_cost) / avg_price < 0.25
+        THEN 'INCREASE PRICE (LOW MARGIN)'
+    WHEN total_units > 1000 AND avg_price < Competitor_Avg_Price
+        THEN 'INCREASE PRICE'
+    WHEN total_units BETWEEN 500 AND 1000 
+         AND avg_price < Competitor_Avg_Price * 0.95
+        THEN 'INCREASE PRICE'
+    WHEN total_units < 500 AND avg_price > Competitor_Avg_Price
+        THEN 'REDUCE PRICE'
+    ELSE 'MAINTAIN PRICE'
+END AS pricing_decision
 
-**Step 1 — Database & Table Creation**
-Creates `ice_cream_project` database. Defines `raw_sales` and `competitor_benchmark` table schemas. Data imported via MySQL Table Import Wizard.
+📈 Power BI Dashboard
 
-**Step 2 — Data Discovery**
-Quality audit before touching anything: counts nulls per column, flags negative units, finds invalid prices, checks distinct values in categorical columns for inconsistencies.
+Source: Excel Cleaned_Data sheet + Competitor_Benchmark_Data sheet
+Power Query (M) — Key Transformations
+m
 
-**Step 3 — Data Cleaning**
-Built as a single `CREATE TABLE AS` with two CTEs:
-- `flavour_averages` — calculates per-flavour average cost and price (not global average — intentional, to impute nulls at flavour level)
-- `cleaned_base` — standardises case (`UPPER + TRIM`), fixes the `VANILA → VANILLA` typo, imputes nulls using `COALESCE + NULLIF`, parses dates with `STR_TO_DATE`, extracts Year and Month
+let
+    Source = Excel.Workbook(File.Contents("excel/IceCreamSeller_pricingprojectFinal.xlsm"), null, true),
+    Cleaned_Sheet = Source{[Item="Cleaned_Data",Kind="Sheet"]}[Data],
+    PromotedHeaders = Table.PromoteHeaders(Cleaned_Sheet, [PromoteAllScalars=true]),
+    SetTypes = Table.TransformColumnTypes(PromotedHeaders, {
+        {"Date", type date}, {"Flavour", type text}, {"Location", type text},
+        {"Season", type text}, {"Day_Type", type text}, {"Units_Sold", Int64.Type},
+        {"Selling_Price", type number}, {"Cost_Per_Unit", type number},
+        {"Weather", type text}, {"Festival_Day", type text}
+    }),
+    AddColumns = Table.AddColumn(SetTypes, "Month", each Date.Month([Date]), Int64.Type),
+    AddMonthName = Table.AddColumn(AddColumns, "Month_Name", each Date.ToText([Date], "MMM"), type text),
+    AddMargin = Table.AddColumn(AddMonthName, "Margin_Pct", each [Profit] / [Revenue] * 100, type number)
+in
+    AddMargin
 
-Duplicate removal via `ROW_NUMBER() OVER (PARTITION BY sale_date, flavour, location)`.
+Key DAX Measures
+Category	Measure	DAX Pattern
+KPIs	Total Revenue	SUM('Sales'[Revenue])
+	Total Profit	SUM('Sales'[Profit])
+	Margin %	DIVIDE([Total Profit], [Total Revenue], 0)
+YoY	Revenue YoY %	DIVIDE([Total Revenue] - [Revenue LY], [Revenue LY])
+Day Type	Weekend Premium %	DIVIDE([Weekend Revenue] - [Weekday Revenue], [Weekday Revenue])
+Pricing	Price Gap	AVERAGE('Sales'[Selling_Price]) - AVERAGE('Competitor'[Avg_Price])
+Ranking	Best Flavour	TOPN(1, VALUES('Sales'[Flavour]), [Total Units])
+Dashboard Pages
+Page	Visuals
+Executive Summary	4 KPI cards · Revenue by Flavour (bar) · Revenue by Season (donut) · Monthly trend (line) · Key insights table
+Flavour & Season	Flavour-Season heatmap (matrix) · Flavour ranking table · Season comparison · MoM growth waterfall
+Pricing Strategy	Price comparison bar · Price gap analysis table · Recommendation card · Price vs Demand scatter
+Location & Day Type	Location performance · Weekend premium gauge · Day type comparison · Festive day impact
+Slicers (Synced Across All Pages)
 
-**Step 4 — Business Summary**
-Single aggregation: total units, revenue, profit, and average price for 2023.
+    Year (2022, 2023)
 
-**Step 5 — Flavour Demand Segmentation**
-`NTILE(4)` window function over a subquery to assign demand quartiles across 5 flavours. Window function runs on the aggregated result, not the raw table — correct MySQL pattern.
+    Season (Summer, Monsoon, Winter)
 
-**Step 6 — Advanced Analytics**
-Three analyses:
-- Competitor pricing comparison (JOIN + CASE WHEN → PREMIUM / DISCOUNT / MATCH)
-- Price band demand analysis (Low / Mid / High buckets)
-- Price sensitivity index per flavour — a range-ratio proxy, not classical elasticity, labelled accordingly
+    Flavour (Multi-select)
 
-**Step 7 — Month-on-Month Trend**
-CTE for monthly aggregation + `LAG()` window function to calculate MoM growth % for each month in 2023.
+    Location
 
-**Step 8 — Final Pricing Decision Query**
-CTE `flavour_metrics` aggregates all flavour-level KPIs and joins competitor data. Main SELECT adds price gap, margin %, `RANK()` by demand, and a multi-condition `CASE WHEN` pricing decision (INCREASE / REDUCE / MAINTAIN) with priority order: margin check first, then demand tier, then competitor position. Final step creates a `VIEW` as a reusable reporting layer.
+💡 Key Findings
+Demand Insights
+Metric	2023 Value
+Total Units	5,221
+Total Revenue	₹2,12,044
+Total Profit	₹1,20,558
+Blended Margin	56.8%
 
----
+    Mango is the top flavour — 1,855 units, 35% of total demand
 
-## Power BI Dashboard
+    Summer drives 55% of annual sales
 
-**Source:** Excel `Cleaned_Data` sheet + `Competitor_Benchmark_Data` sheet
+    Weekends generate 58% of revenue (27% higher than weekdays)
 
-**Power Query transformations:**
-- Type casting all columns, renaming for consistency
-- Filtering blank Season rows
-- Adding `Month`, `Month_Name`, `Quarter`, `Margin_Pct` columns
-- Competitor table filtered to local budget segment only
-- Auto-generated `Date_Table` with Season logic built in
+    Connaught Place accounts for 58.6% of total revenue
 
-**DAX Measures (17):**
+Pricing Insights
+Flavour	Our Price	Competitor Avg	Gap	Margin %
+Mango	₹37.43	₹45.00	-₹7.57	56.1%
+Chocolate	₹41.56	₹44.00	-₹2.44	55.6%
+Vanilla	₹28.44	₹35.00	-₹6.56	52.7%
+Strawberry	₹34.73	₹39.00	-₹4.27	55.6%
+Kesar Pista	₹57.89	₹60.00	-₹2.11	61.2%
 
-| Measure | Pattern Used |
-|---|---|
-| Total Revenue / Profit / Units | SUM |
-| Avg Selling Price | AVERAGE |
-| Profit Margin % | DIVIDE with zero-division handling |
-| Revenue LY / Units LY | CALCULATE + SAMEPERIODLASTYEAR |
-| YoY Revenue Growth % | DIVIDE + time intelligence |
-| YoY Units Growth % | DIVIDE + time intelligence |
-| Weekend Revenue | CALCULATE + filter context |
-| Festival Day Revenue | CALCULATE + filter context |
-| Price vs Competitor Gap | VAR + AVERAGE |
-| MoM Units Growth % | VAR + nested CALCULATE |
-| Best Flavour / Peak Season | TOPN + FIRSTNONBLANK |
+Every flavour is priced below the local market competitor with healthy margins (52–61%), confirming room to raise prices.
+Scenario Analysis (2024 Monsoon)
+Scenario	Projected Profit	vs Baseline
+Premium (+10–15% price)	₹28,593	+11.3%
+Baseline (current prices)	₹25,698	—
+Volume Boost (price cut)	₹23,132	-10.0%
 
-**Calculated Columns:**
-- `Price_Band` — IF logic bucketing Low / Mid / High
-- `Pricing_Action` — LOOKUPVALUE against competitor table → ⬆ INCREASE / ✔ MAINTAIN / ⬇ REDUCE
-- `Season_Order` and `Month_Sort` — for correct axis sorting
+Conclusion: Raising prices outperforms cutting them. Volume alone does not compensate for margin loss.
+Final SQL Decision
 
-**Visuals:** 6 KPI cards · Clustered bar (Profit by Flavour) · Line chart (Monthly trend 2022 vs 2023) · Donut (Season share) · Clustered bar (Our price vs Competitor) · Matrix (Flavour × Season) · Stacked bar (Price Band × Day Type) · 4 tile slicers
+All 5 flavours → INCREASE PRICE
+🛠️ Skills Demonstrated
+Category	Skills
+SQL	DDL/DML, CTEs, subqueries, window functions (RANK, NTILE, LAG, ROW_NUMBER), JOINs, CASE WHEN, NULLIF/COALESCE, STR_TO_DATE, CREATE VIEW
+Excel	AVERAGEIF, SUMIF, VLOOKUP, PROPER, TRIM, IF nesting, Pivot Tables, Scenario Manager, Solver, conditional formatting, data validation
+VBA	Subroutines, workbook/sheet object model, PDF export, pivot refresh loops, event-driven macros
+Power BI	Power Query (M), relationship modelling, DAX (CALCULATE, SAMEPERIODLASTYEAR, DIVIDE, VAR, TOPN, LOOKUPVALUE, FIRSTNONBLANK), time intelligence, calculated columns, slicers
+Analytics	Data cleaning, EDA, competitor benchmarking, price sensitivity, demand forecasting, scenario modelling, P&L construction, margin analysis
+🚀 How to Run This Project
+Excel
 
----
+    Open excel/IceCreamSeller_pricingprojectFinal.xlsm
 
-## Key Findings
+    Enable macros when prompted
 
-**Demand**
-- 2023: 5,221 units · ₹2,12,044 revenue · ₹1,20,558 profit · 56.8% blended margin
-- Revenue grew 20% year-on-year (2022 → 2023)
-- Mango is the top flavour — 1,855 units, ₹41,634 profit (35% of total demand)
-- Summer drives 55% of annual demand; weekends generate 58% of revenue
+    Navigate through sheets to explore analysis
 
-**Pricing**
-- Every flavour is priced below the local market competitor
-- Largest gap: Mango at −₹7.39 · Smallest gap: Kesar Pista at −₹1.00
-- Healthy margins (52–61%) across all flavours confirm room to raise prices
+    Click "Refresh Dashboard" button on DASHBOARD sheet
 
-**Scenario Analysis**
-- Premium pricing scenario: ₹28,593 projected Monsoon profit (+11.3% vs baseline)
-- Volume Boost scenario: ₹23,132 — cutting prices to drive volume underperforms
-- Recommendation: raise prices, do not chase volume
+SQL
 
----
+    Import data/raw_icecream_messy.csv and data/competitor_benchmark.csv into MySQL
 
-## Skills Demonstrated
+    Run sql/ice_cream_project_analysis.sql step by step
 
-**SQL** — DDL/DML, CTEs, subqueries, window functions (RANK, NTILE, LAG, ROW_NUMBER), JOINs, CASE WHEN, NULLIF/COALESCE, STR_TO_DATE, CREATE VIEW
+    Review final pricing decision output
 
-**Excel** — AVERAGEIF, SUMIF, VLOOKUP, PROPER, TRIM, IF nesting, Pivot Tables, Scenario Manager, Solver, conditional formatting, data validation
+Power BI
 
-**VBA** — Subroutines, workbook/sheet object model, PDF export, pivot refresh loops, event-driven macros
+    Open powerbi/IceCream_Dashboard.pbix
 
-**Power BI** — Power Query (M), relationship modelling, DAX (CALCULATE, SAMEPERIODLASTYEAR, DIVIDE, VAR, TOPN, LOOKUPVALUE, FIRSTNONBLANK), time intelligence, calculated columns, slicers
+    Ensure Excel file path is correct (or repoint data source)
 
-**Analytics** — Data cleaning, EDA, competitor benchmarking, price sensitivity, demand forecasting, scenario modelling, P&L construction, margin analysis
+    Explore interactive pages and slicers
 
----
+📸 Dashboard Preview
+Executive Summary	Pricing Strategy
+Screenshot coming	Screenshot coming
+👤 Author
+
+Adyant Bhriguvanshi
+Data Analyst | Economics (Hansraj College, University of Delhi)
