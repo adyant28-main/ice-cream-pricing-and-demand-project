@@ -1,92 +1,106 @@
-🍨 Ice Cream Pricing & Demand Analytics
-Excel · VBA · MySQL · Power BI
+# 🍨 Ice Cream Pricing & Demand Analytics
 
-    End-to-end analytics project: From messy raw data to strategic pricing recommendations. Complete workflow across Excel (with VBA), SQL (8-step pipeline), and Power BI (interactive dashboard).
+### Excel · VBA · MySQL · Power BI
 
-📌 The Business Problem
+> **End-to-end analytics project:** From messy raw data to strategic pricing recommendations. Complete workflow across Excel (with VBA), SQL (8-step pipeline), and Power BI (interactive dashboard).
 
-A street ice cream vendor operating across 3 Delhi locations had 2 years of sales data sitting in a spreadsheet — unclean, unanalysed, and underused. Prices hadn't been reviewed against the market. There was no visibility into:
+---
 
-    Which flavours were actually profitable
+## 📌 The Business Problem
 
-    Which seasons drove demand
+A street ice cream vendor operating across 3 Delhi locations had **2 years of sales data** sitting in a spreadsheet — unclean, unanalysed, and underused. Prices hadn't been reviewed against the market. There was no visibility into:
+- Which flavours were actually profitable
+- Which seasons drove demand
+- Whether the pricing strategy made sense
 
-    Whether the pricing strategy made sense
+**This project answers four questions a business owner would actually ask:**
 
-This project answers four questions a business owner would actually ask:
+1. **What sold, where, and when?** — Demand patterns by flavour, season, location, day type
+2. **Are we making enough margin?** — Cost structure and profitability per flavour
+3. **How do our prices compare to the market?** — Competitor benchmarking and pricing strategy
+4. **What happens to profit if we adjust prices?** — Scenario modelling and what-if analysis
 
-    What sold, where, and when? — Demand patterns by flavour, season, location, day type
+---
 
-    Are we making enough margin? — Cost structure and profitability per flavour
+## 📊 Dataset
 
-    How do our prices compare to the market? — Competitor benchmarking and pricing strategy
+| Property | Detail |
+|----------|--------|
+| **Period** | April 2022 — December 2023 |
+| **Records** | 148 transactions |
+| **Flavours** | Mango, Chocolate, Vanilla, Strawberry, Kesar Pista |
+| **Locations** | Connaught Place, Lajpat Nagar, Karol Bagh |
+| **Seasons** | Summer, Monsoon, Winter |
+| **Fields** | Date, Flavour, Location, Season, Day Type, Units Sold, Selling Price, Cost/Unit, Weather, Festival Day |
 
-    What happens to profit if we adjust prices? — Scenario modelling and what-if analysis
+> **Note:** Two versions of raw data exist intentionally — one for Excel cleaning (within the workbook) and one as a deliberately messy `.csv` for the SQL cleaning pipeline. Both trace back to the same source; the messiness in the CSV (case inconsistencies, nulls, whitespace, negative units) was introduced to demonstrate SQL data wrangling skills.
 
-📊 Dataset
-Property	Detail
-Period	April 2022 — December 2023
-Records	148 transactions
-Flavours	Mango, Chocolate, Vanilla, Strawberry, Kesar Pista
-Locations	Connaught Place, Lajpat Nagar, Karol Bagh
-Seasons	Summer, Monsoon, Winter
-Fields	Date, Flavour, Location, Season, Day Type, Units Sold, Selling Price, Cost/Unit, Weather, Festival Day
+---
 
-    Note: Two versions of raw data exist intentionally — one for Excel cleaning (within the workbook) and one as a deliberately messy .csv for the SQL cleaning pipeline. Both trace back to the same source; the messiness in the CSV (case inconsistencies, nulls, whitespace, negative units) was introduced to demonstrate SQL data wrangling skills.
+## 🔄 Project Workflow
+Excel:
+Raw Data >Data Cleaning → Pivot Demand Analysis → Cost & P&L Modelling
+→ Dynamic Pricing → Demand Forecasting → 
+→ Scenario Manager →  VBA Automation
+ SQL Pipeline:
+ (Data Cleaning)> Exploratory Analysis > Advanced Analysis > Recommendation > Summary
+ Power BI: 
+ Loading Data > Power Query > DAX > Measures and Columns > Charts and Analysis > Dashboard
 
-🔄 Project Workflow
-text
+ 
+---
 
-Raw Data → Data Cleaning → Pivot Analysis → Cost & P&L Modelling
-    → Dynamic Pricing → Demand Forecasting → What-If Analysis
-    → Scenario Manager → Solver Optimisation → VBA Automation
-    → SQL Pipeline → Power BI Dashboard
-
-📁 Repository Structure
-text
-
+## 📁 Repository Structure
 ice-cream-pricing-and-demand-project/
 │
-├── README.md                          # This file
+├── README.md # This file
 │
 ├── excel/
-│   └── IceCreamSeller_pricingprojectFinal.xlsm    # Main Excel workbook with VBA
+│ └── IceCreamSeller_pricingprojectFinal.xlsm # Main Excel workbook with VBA
 │
 ├── sql/
-│   └── ice_cream_project_analysis.sql             # Complete 8-step SQL pipeline
+│ └── ice_cream_project_analysis.sql # Complete 8-step SQL pipeline
 │
 ├── powerbi/
-│   └── IceCream_Dashboard.pbix                    # Interactive Power BI dashboard
+│ └── IceCream_Dashboard.pbix # Interactive Power BI dashboard
 │
 ├── data/
-│   ├── raw_icecream_messy.csv                     # Messy data for SQL pipeline
-│   └── competitor_benchmark.csv                   # Competitor pricing data
+│ ├── raw_icecream_messy.csv # Messy data for SQL pipeline
+│ └── competitor_benchmark.csv # Competitor pricing data
 │
 └── output/
-    └── pricing_recommendations.csv                # Export of final decisions
+└── pricing_recommendations.csv # Export of final decisions
 
-📊 Excel Workbook — Sheet by Sheet
+
+---
+
+## 📊 Excel Workbook — Sheet by Sheet
 
 The workbook follows a deliberate analyst workflow. Each sheet builds on the last.
-Sheet	Purpose
-Raw_Data	Original untouched data as imported. Preserved for audit trail.
-Cleaning_Log	Documents every error found and fix applied: wrong case (PROPER function), null costs (AVERAGEIF imputation), duplicate rows, formatting inconsistencies.
-Cleaned_Data	Standardised table with computed columns: Revenue (Units × Price), Total Cost (Units × Cost), Profit (Revenue − Cost), Year. Single source of truth.
-1) Pivot_DemandAnalysis	Five pivot tables covering demand by flavour, location, season, day type, and full flavour-season interaction matrix.
-2) Cost Structure	Flavour-level cost breakdown: average selling price, average cost per unit, gross margin, and margin %.
-3) Pricing_Strategy	Benchmarks our prices against local market. Every flavour priced below market.
-4) Demand Forecasting	Projects 2024 demand by flavour using historical seasonal patterns.
-5) Profit & Loss	Full 2023 P&L with units, revenue, cost, gross profit, and margin % per flavour.
-Season Pricing Dynamics	Strategic centrepiece. Models 3 pricing scenarios for 2024 Monsoon using forecasted demand.
-DASHBOARD	Single-page Excel dashboard with KPI cards, charts, and VBA-powered refresh button.
-🔧 VBA Macros
+
+| Sheet | Purpose |
+|-------|---------|
+| **`Raw_Data`** | Original untouched data as imported. Preserved for audit trail. |
+| **`Cleaning_Log`** | Documents every error found and fix applied: wrong case (PROPER function), null costs (AVERAGEIF imputation), duplicate rows, formatting inconsistencies. |
+| **`Cleaned_Data`** | Standardised table with computed columns: Revenue (`Units × Price`), Total Cost (`Units × Cost`), Profit (`Revenue − Cost`), Year. Single source of truth. |
+| **`1) Pivot_DemandAnalysis`** | Five pivot tables covering demand by flavour, location, season, day type, and full flavour-season interaction matrix. |
+| **`2) Cost Structure`** | Flavour-level cost breakdown: average selling price, average cost per unit, gross margin, and margin %. |
+| **`3) Pricing_Strategy`** | Benchmarks our prices against local market. Every flavour priced below market. |
+| **`4) Demand Forecasting`** | Projects 2024 demand by flavour using historical seasonal patterns. |
+| **`5) Profit & Loss`** | Full 2023 P&L with units, revenue, cost, gross profit, and margin % per flavour. |
+| **`Season Pricing Dynamics`** | **Strategic centrepiece.** Models 3 pricing scenarios for 2024 Monsoon using forecasted demand. |
+| **`DASHBOARD`** | Single-page Excel dashboard with KPI cards, charts, and VBA-powered refresh button. |
+
+---
+
+## 🔧 VBA Macros
 
 Two macros in the workbook, assigned to dashboard buttons:
-1. RefreshDashboard
 
+### 1. `RefreshDashboard`
 Refreshes all pivot tables across the workbook in one click, recalculates derived fields.
-vba
 
+```vba
 Sub RefreshDashboard()
     Dim pt As PivotTable
     For Each ws In ThisWorkbook.Worksheets
@@ -98,22 +112,7 @@ Sub RefreshDashboard()
     MsgBox "Dashboard refreshed successfully!"
 End Sub
 
-2. ExportPDFReport
-
-Exports the dashboard sheet as a formatted PDF with timestamp in filename — one-click reporting.
-vba
-
-Sub ExportPDFReport()
-    Dim fileName As String
-    fileName = "IceCream_Report_" & Format(Now(), "YYYYMMDD_hhmmss") & ".pdf"
-    Sheets("DASHBOARD").ExportAsFixedFormat _
-        Type:=xlTypePDF, _
-        Filename:=ThisWorkbook.Path & "\" & fileName, _
-        Quality:=xlQualityStandard
-    MsgBox "Report saved: " & fileName
-End Sub
-
-🗄️ SQL Pipeline — 8 Steps
+SQL Pipeline — 8 Steps
 Step	Description	Key Techniques
 1	Database & Table Creation	DDL, schema design
 2	Data Discovery	NULL checks, negative values, distinct values audit
@@ -123,23 +122,9 @@ Step	Description	Key Techniques
 6	Advanced Analytics	Competitor JOIN, price band analysis, price sensitivity proxy
 7	Month-on-Month Trend	LAG() window function, MoM growth %
 8	Final Pricing Decision	CTE + RANK() + multi-condition CASE WHEN with margin priority
-Sample: Final Pricing Decision Logic
-sql
 
-CASE 
-    WHEN (avg_price - avg_cost) / avg_price < 0.25
-        THEN 'INCREASE PRICE (LOW MARGIN)'
-    WHEN total_units > 1000 AND avg_price < Competitor_Avg_Price
-        THEN 'INCREASE PRICE'
-    WHEN total_units BETWEEN 500 AND 1000 
-         AND avg_price < Competitor_Avg_Price * 0.95
-        THEN 'INCREASE PRICE'
-    WHEN total_units < 500 AND avg_price > Competitor_Avg_Price
-        THEN 'REDUCE PRICE'
-    ELSE 'MAINTAIN PRICE'
-END AS pricing_decision
 
-📈 Power BI Dashboard
+ Power BI Dashboard
 
 Source: Excel Cleaned_Data sheet + Competitor_Benchmark_Data sheet
 Power Query (M) — Key Transformations
@@ -255,10 +240,3 @@ Power BI
 
     Explore interactive pages and slicers
 
-📸 Dashboard Preview
-Executive Summary	Pricing Strategy
-Screenshot coming	Screenshot coming
-👤 Author
-
-Adyant Bhriguvanshi
-Data Analyst | Economics (Hansraj College, University of Delhi)
