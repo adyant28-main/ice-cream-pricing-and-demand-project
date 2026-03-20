@@ -112,24 +112,27 @@ Sub RefreshDashboard()
     MsgBox "Dashboard refreshed successfully!"
 End Sub
 
-SQL Pipeline — 8 Steps
-Step	Description	Key Techniques
-1	Database & Table Creation	DDL, schema design
-2	Data Discovery	NULL checks, negative values, distinct values audit
-3	Data Cleaning	CTEs, COALESCE, NULLIF, STR_TO_DATE, ROW_NUMBER() deduplication
-4	Business Summary	Aggregations, 2023 performance
-5	Flavour Demand Segmentation	NTILE(4) window function
-6	Advanced Analytics	Competitor JOIN, price band analysis, price sensitivity proxy
-7	Month-on-Month Trend	LAG() window function, MoM growth %
-8	Final Pricing Decision	CTE + RANK() + multi-condition CASE WHEN with margin priority
+## 🗄️ SQL Pipeline — 8 Steps
 
+| Step | Description | Key Techniques |
+|------|-------------|---------------|
+| 1 | Database & Table Creation | DDL, schema design |
+| 2 | Data Discovery | NULL checks, negative values, distinct values audit |
+| 3 | Data Cleaning | CTEs, COALESCE, NULLIF, STR_TO_DATE, ROW_NUMBER() deduplication |
+| 4 | Business Summary | Aggregations, 2023 performance |
+| 5 | Flavour Demand Segmentation | NTILE(4) window function |
+| 6 | Advanced Analytics | Competitor JOIN, price band analysis, price sensitivity proxy |
+| 7 | Month-on-Month Trend | LAG() window function, MoM growth % |
+| 8 | Final Pricing Decision | CTE + RANK() + multi-condition CASE WHEN with margin priority |
 
- Power BI Dashboard
+---
 
-Source: Excel Cleaned_Data sheet + Competitor_Benchmark_Data sheet
-Power Query (M) — Key Transformations
-m
+## 📈 Power BI Dashboard
 
+**Source:** Excel `Cleaned_Data` sheet + `Competitor_Benchmark_Data` sheet
+
+### Power Query (M) — Key Transformations
+```powerquery
 let
     Source = Excel.Workbook(File.Contents("excel/IceCreamSeller_pricingprojectFinal.xlsm"), null, true),
     Cleaned_Sheet = Source{[Item="Cleaned_Data",Kind="Sheet"]}[Data],
@@ -147,96 +150,192 @@ in
     AddMargin
 
 Key DAX Measures
-Category	Measure	DAX Pattern
-KPIs	Total Revenue	SUM('Sales'[Revenue])
-	Total Profit	SUM('Sales'[Profit])
-	Margin %	DIVIDE([Total Profit], [Total Revenue], 0)
-YoY	Revenue YoY %	DIVIDE([Total Revenue] - [Revenue LY], [Revenue LY])
-Day Type	Weekend Premium %	DIVIDE([Weekend Revenue] - [Weekday Revenue], [Weekday Revenue])
-Pricing	Price Gap	AVERAGE('Sales'[Selling_Price]) - AVERAGE('Competitor'[Avg_Price])
-Ranking	Best Flavour	TOPN(1, VALUES('Sales'[Flavour]), [Total Units])
+Category
+	
+Measure
+	
+DAX Pattern
+KPIs
+	
+Total Revenue
+	
+SUM('Sales'[Revenue])
+	
+Total Profit
+	
+SUM('Sales'[Profit])
+	
+Margin %
+	
+DIVIDE([Total Profit], [Total Revenue], 0)
+YoY
+	
+Revenue YoY %
+	
+DIVIDE([Total Revenue] - [Revenue LY], [Revenue LY])
+Day Type
+	
+Weekend Premium %
+	
+DIVIDE([Weekend Revenue] - [Weekday Revenue], [Weekday Revenue])
+Pricing
+	
+Price Gap
+	
+AVERAGE('Sales'[Selling_Price]) - AVERAGE('Competitor'[Avg_Price])
+Ranking
+	
+Best Flavour
+	
+TOPN(1, VALUES('Sales'[Flavour]), [Total Units])
 Dashboard Pages
-Page	Visuals
-Executive Summary	4 KPI cards · Revenue by Flavour (bar) · Revenue by Season (donut) · Monthly trend (line) · Key insights table
-Flavour & Season	Flavour-Season heatmap (matrix) · Flavour ranking table · Season comparison · MoM growth waterfall
-Pricing Strategy	Price comparison bar · Price gap analysis table · Recommendation card · Price vs Demand scatter
-Location & Day Type	Location performance · Weekend premium gauge · Day type comparison · Festive day impact
+Page
+	
+Visuals
+Executive Summary
+	
+4 KPI cards · Revenue by Flavour (bar) · Revenue by Season (donut) · Monthly trend (line) · Key insights table
+Flavour & Season
+	
+Flavour-Season heatmap (matrix) · Flavour ranking table · Season comparison · MoM growth waterfall
+Pricing Strategy
+	
+Price comparison bar · Price gap analysis table · Recommendation card · Price vs Demand scatter
+Location & Day Type
+	
+Location performance · Weekend premium gauge · Day type comparison · Festive day impact
 Slicers (Synced Across All Pages)
 
-    Year (2022, 2023)
-
-    Season (Summer, Monsoon, Winter)
-
-    Flavour (Multi-select)
-
-    Location
+    📅 Year (2022, 2023)
+    ☀️ Season (Summer, Monsoon, Winter)
+    🍦 Flavour (Multi-select)
+    📍 Location
 
 💡 Key Findings
 Demand Insights
-Metric	2023 Value
-Total Units	5,221
-Total Revenue	₹2,12,044
-Total Profit	₹1,20,558
-Blended Margin	56.8%
+Metric
+	
+2023 Value
+Total Units
+	
+5,221
+Total Revenue
+	
+₹2,12,044
+Total Profit
+	
+₹1,20,558
+Blended Margin
+	
+56.8%
 
-    Mango is the top flavour — 1,855 units, 35% of total demand
-
-    Summer drives 55% of annual sales
-
-    Weekends generate 58% of revenue (27% higher than weekdays)
-
-    Connaught Place accounts for 58.6% of total revenue
+    🥭 Mango is the top flavour — 1,855 units, 35% of total demand
+    ☀️ Summer drives 55% of annual sales
+    🗓️ Weekends generate 58% of revenue (27% higher than weekdays)
+    🏙️ Connaught Place accounts for 58.6% of total revenue
 
 Pricing Insights
-Flavour	Our Price	Competitor Avg	Gap	Margin %
-Mango	₹37.43	₹45.00	-₹7.57	56.1%
-Chocolate	₹41.56	₹44.00	-₹2.44	55.6%
-Vanilla	₹28.44	₹35.00	-₹6.56	52.7%
-Strawberry	₹34.73	₹39.00	-₹4.27	55.6%
-Kesar Pista	₹57.89	₹60.00	-₹2.11	61.2%
+Flavour
+	
+Our Price
+	
+Competitor Avg
+	
+Gap
+	
+Margin %
+Mango
+	
+₹37.43
+	
+₹45.00
+	
+-₹7.57
+	
+56.1%
+Chocolate
+	
+₹41.56
+	
+₹44.00
+	
+-₹2.44
+	
+55.6%
+Vanilla
+	
+₹28.44
+	
+₹35.00
+	
+-₹6.56
+	
+52.7%
+Strawberry
+	
+₹34.73
+	
+₹39.00
+	
+-₹4.27
+	
+55.6%
+Kesar Pista
+	
+₹57.89
+	
+₹60.00
+	
+-₹2.11
+	
+61.2%
 
-Every flavour is priced below the local market competitor with healthy margins (52–61%), confirming room to raise prices.
+    ✅ Every flavour is priced below the local market competitor with healthy margins (52–61%), confirming room to raise prices.
+
 Scenario Analysis (2024 Monsoon)
-Scenario	Projected Profit	vs Baseline
-Premium (+10–15% price)	₹28,593	+11.3%
-Baseline (current prices)	₹25,698	—
-Volume Boost (price cut)	₹23,132	-10.0%
+Scenario
+	
+Projected Profit
+	
+vs Baseline
+Premium (+10–15% price)
+	
+₹28,593
+	
++11.3%
+Baseline (current prices)
+	
+₹25,698
+	
+—
+Volume Boost (price cut)
+	
+₹23,132
+	
+-10.0%
 
-Conclusion: Raising prices outperforms cutting them. Volume alone does not compensate for margin loss.
+    🎯 Conclusion: Raising prices outperforms cutting them. Volume alone does not compensate for margin loss.
+
 Final SQL Decision
 
-All 5 flavours → INCREASE PRICE
+1
+
 🛠️ Skills Demonstrated
-Category	Skills
-SQL	DDL/DML, CTEs, subqueries, window functions (RANK, NTILE, LAG, ROW_NUMBER), JOINs, CASE WHEN, NULLIF/COALESCE, STR_TO_DATE, CREATE VIEW
-Excel	AVERAGEIF, SUMIF, VLOOKUP, PROPER, TRIM, IF nesting, Pivot Tables, Scenario Manager, Solver, conditional formatting, data validation
-VBA	Subroutines, workbook/sheet object model, PDF export, pivot refresh loops, event-driven macros
-Power BI	Power Query (M), relationship modelling, DAX (CALCULATE, SAMEPERIODLASTYEAR, DIVIDE, VAR, TOPN, LOOKUPVALUE, FIRSTNONBLANK), time intelligence, calculated columns, slicers
-Analytics	Data cleaning, EDA, competitor benchmarking, price sensitivity, demand forecasting, scenario modelling, P&L construction, margin analysis
-🚀 How to Run This Project
-Excel
-
-    Open excel/IceCreamSeller_pricingprojectFinal.xlsm
-
-    Enable macros when prompted
-
-    Navigate through sheets to explore analysis
-
-    Click "Refresh Dashboard" button on DASHBOARD sheet
-
+Category
+	
+Skills
 SQL
-
-    Import data/raw_icecream_messy.csv and data/competitor_benchmark.csv into MySQL
-
-    Run sql/ice_cream_project_analysis.sql step by step
-
-    Review final pricing decision output
-
+	
+DDL/DML, CTEs, subqueries, window functions (RANK, NTILE, LAG, ROW_NUMBER), JOINs, CASE WHEN, NULLIF/COALESCE, STR_TO_DATE, CREATE VIEW
+Excel
+	
+AVERAGEIF, SUMIF, VLOOKUP, PROPER, TRIM, IF nesting, Pivot Tables, Scenario Manager, Solver, conditional formatting, data validation
+VBA
+	
+Subroutines, workbook/sheet object model, PDF export, pivot refresh loops, event-driven macros
 Power BI
-
-    Open powerbi/IceCream_Dashboard.pbix
-
-    Ensure Excel file path is correct (or repoint data source)
-
-    Explore interactive pages and slicers
-
+	
+Power Query (M), relationship modelling, DAX (CALCULATE, SAMEPERIODLASTYEAR, DIVIDE, VAR, TOPN, LOOKUPVALUE, FIRSTNONBLANK), time intelligence, calculated columns, slicers
+Analytics
+	
+Data cleaning, EDA, competitor benchmarking, price sensitivity, demand forecasting, scenario modelling, P&L construction, margin analysis
